@@ -1,0 +1,378 @@
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+
+@theme {
+    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+        'Segoe UI Symbol', 'Noto Color Emoji';
+}
+
+h1 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 2rem 0;
+  
+}
+h2 {
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin: 0.5rem;
+}
+h3 {
+    font-size: 1.15rem;
+    font-weight: bold;
+    margin: 1rem 0;
+}
+
+h4{
+  font-weight: bold;
+}
+
+a, p {
+  margin: 0 0.5rem;
+}
+
+body{
+  background-color: rgb(242, 232, 207);
+}
+
+main{
+  margin:0 2.5%;
+}
+
+/* header */
+header {
+    background-color:rgb(106, 153, 78);
+    color: rgb(242, 232, 207);
+    height: 100px;
+    padding: 1rem 5%;
+    display: flex;
+    align-items:center;
+    justify-content: space-between
+  }
+
+header h1{
+  margin-right: 2rem;
+}
+  
+header nav{ 
+  display: flex;
+  align-items:center;
+  width: 100%;
+  justify-content: space-between;
+}
+
+header ul{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 1rem;
+  }
+
+header li a {
+display: block;
+color: white;
+text-align: center;
+padding: 14px 16px;
+text-decoration: none;
+}
+
+header li a:hover {
+  background-color:rgb(56, 102, 65);
+}
+
+.nav-left{
+  display: flex;
+  align-items:center;
+}
+
+.nav-right{
+  display: flex;
+  align-items:center;
+}
+
+.welcome-text{
+  color: rgb(242, 232, 207);
+  padding: 14px 16px;
+}
+
+.logout-button {
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: 1rem;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.logout-button:hover {
+  background-color: rgb(56, 102, 65);
+}
+
+/* Login */
+.login {
+  max-width: 30%;
+  margin: 0 auto;
+  padding: 1rem;
+  margin: 4rem auto;
+  background-color:rgb(224, 151, 72);
+}
+
+.login button, .btn{
+  background-color: rgb(199, 105, 38);
+  color:rgb(242, 232, 207);
+  padding: 0.5rem 1rem;
+  width: 100%;
+}
+
+.login button:hover, .btn:hover{
+  background-color: rgb(189, 86, 12);
+}
+
+button{ 
+  margin: 1rem 0;
+}
+
+input, select, textarea {
+  display: block;
+  width: 100%;
+  margin: 0, 0.5rem;
+  padding: 0.5rem;
+  background-color: rgb(242, 232, 207);
+}
+
+input, select{
+  border: 1px solid black;
+}
+
+/* meldingen */
+.error{
+  color: rgb(255, 0, 0);
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+/* automaat vakken */
+.automaat-container{
+  background-color: rgb(168, 168, 168);
+  display: flex;
+  margin:5rem 5%;
+  padding: 0.5rem;
+  justify-content: space-between;
+}
+
+.producten {
+  display: grid;
+  margin: 0.5rem;
+  padding: 1rem;
+  width: 70%;
+  gap: 1rem;
+}
+
+.row{
+  display: grid;
+  gap: 1rem;
+}
+
+.row-1{
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.row-2{
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.row-3{
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.column{
+  width: 100%;
+  height: auto;
+  position: relative;
+}
+
+.card-img{
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+.vak-nummer{
+  color: black;
+  position: absolute;
+  top: 0;
+  right: 8%;
+}
+
+.row-1 .vak-nummer{
+  font-size: 1.5rem;
+  top: 4%;
+}
+
+.row-2 .vak-nummer{
+  font-size: 1rem;
+  top: 7%;
+}
+
+.row-3 .vak-nummer{
+  font-size: 2rem;
+  top: 6%;
+}
+
+@media (min-width: 1440px) {
+  .row-1 .vak-nummer{
+    font-size: 2rem;
+  }
+  
+  .row-2 .vak-nummer{
+    font-size: 1.5rem;
+  }
+  
+  .row-3 .vak-nummer{
+    font-size: 3rem;
+  }
+}
+
+@media (min-width: 2560px) {
+  .automaat-container{
+    margin:5rem 15%;
+  }
+  .row-1 .vak-nummer{
+    font-size: 3rem;
+  }
+  
+  .row-2 .vak-nummer{
+    font-size: 2rem;
+  }
+  
+  .row-3 .vak-nummer{
+    font-size: 4rem;
+  }
+}
+
+/* cards */
+.card{
+  display:flex;
+  background-color:rgb(224, 151, 72);
+  width: 22%;
+  padding: 1%;
+}
+
+.card-grid{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin: 2%;
+}
+
+.card img{
+  width:50%;
+  height: auto;
+}
+
+.card-body{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 0 2%;
+  font-size: 1rem;
+}
+
+.add-btn{
+  background-color: rgb(199, 105, 38);
+  color: rgb(224, 151, 72);
+  width: 50%;
+  aspect-ratio: 1 / 1;
+  display: flex;
+  justify-content: center;
+  font-size: 6rem;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.add-btn:hover{
+  background-color: rgb(189, 86, 12);
+}
+
+@media (min-width: 2560px) {
+  .card{
+    width: 15%;
+  }
+
+  .card-body{
+    font-size: 1.25rem;
+  }
+}
+
+/* Vakken informatie */
+table, th, td{
+  border: 1px, solid;
+  padding : 5px 10px;
+}
+
+/* Numpad */
+.numpad-btn{
+  width: 60px;
+  height: 60px;
+  font-size: 1.5rem;
+  margin: 5px;
+  cursor: pointer;
+}
+
+/* product kiezen */
+.betalen-container{
+  background-color: rgb(224, 151, 72);
+  margin: 0.5rem;
+  padding: 1rem;
+  width: 30%;
+}
+
+.numpad {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px; /* spacing tussen knoppen */
+  margin: 0 auto;
+  width: 80%;
+}
+
+.numpad-btn {
+  height: 60px;
+  font-size: 1.5rem;
+  width: 100%; /* neem volledig beschikbare grid-breedte */
+  margin: 0; /* geen extra buitenruimte */
+}
+
+
+.betalen-container button{
+  background-color: rgb(199, 105, 38);
+  color:rgb(242, 232, 207);
+  padding: 0.5rem 1rem;
+  margin: 2%;
+  box-sizing: border-box;
+}
+
+.betalen-container button:hover{
+  background-color: rgb(218, 125, 60);
+}
+
+#betalenKeuze{
+  display:none;
+}
+
+.product-keuze{
+  display: flex;
+  padding: 0;
+  margin: 0;
+}
+
+.product-keuze button{
+  margin: 5px;
+  margin-left: auto;
+  padding: 2.5px 2rem;
+}
