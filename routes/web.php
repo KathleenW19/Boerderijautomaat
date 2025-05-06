@@ -33,10 +33,10 @@ Route::post('/bijvullen', [VakController::class, 'bijvullen'])->name('bijvullen'
 Route::post('/vak/controleer', [VakController::class, 'checkVak'])->name('vak.controleer');
 Route::post('/vak/betaal', [VakController::class, 'betaal'])->name('vak.betaal');
 Route::post('/vak/{id}/update-status', [VakController::class, 'updateStatus']);
-Route::get('/api/product/{id}/afbeelding_vak_open', function($id) {
+Route::get('/api/product/{id}/deur_afbeelding', function($id) {
     $product = \App\Models\Product::findOrFail($id);
     return response()->json([
-        'afbeelding_vak_open_url' => asset($product->afbeelding_vak_open)
+        'deur_afbeelding_url' => asset($product->deur_afbeelding)
     ]);
 });
 

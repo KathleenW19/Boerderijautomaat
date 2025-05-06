@@ -110,29 +110,23 @@
                 document.getElementById('betaalopties').style.display = 'none';
                 document.getElementById('instructies').style.display = 'block';
 
-                // Afbeelding vervangen met de geopende versie
-                const imageElement = document.querySelector(`img[data-vak-id="${gekozenVakId}"]`);
-                const productId = imageElement?.dataset?.productId;
-
-                if (imageElement && productId) {
-                    fetch(`/api/product/${productId}/afbeelding_vak_open`)
-                        .then(res => res.json())
-                        .then(imgData => {
-                            imageElement.src = imgData.afbeelding_vak_open_url;
-                            imageElement.alt = "Vak geopend";
-                        });
+                // Toon product afbeelding achter deur
+                const productImage = document.querySelector(`img.vak-product-afbeelding[data-vak-id="${gekozenVakId}"]`);
+                if (productImage) {
+                    productImage.style.display = 'block'; // Toon afbeelding als vak geopend is
                 }
             }
         });
     }
 
+
     // Event delegation for click op vak images
     document.addEventListener('click', function (e) {
-        if (e.target.classList.contains('vak-image')) {
+        if (e.target.classList.contains('vak-deur-afbeelding')) {
             const vakId = e.target.dataset.vakId;
 
             if (vakId == gekozenVakId) {
-                // Product eruit halen (leeg maken)
+                // Product eruit halen (vak leeg maken)
                 fetch(`/vak/${vakId}/update-status`, {
                     method: 'POST',
                     headers: {
@@ -144,8 +138,18 @@
                 .then(res => res.json())
                 .then(data => {
                     if (data.success) {
+                        // Verberg product afbeelding
+                        const productImage = document.querySelector(`img.vak-product-afbeelding[data-vak-id="${vakId}"]`);
+                        if (productImage) {
+                            productImage.style.display = 'none';
+                        }
+
                         alert("Product verwijderd. Dank u!");
-                        location.reload(); // herlaad zodat volgende klant kan kiezen
+                        gekozenVakId = null;
+
+                        // Terug naar startscherm
+                        document.getElementById('instructies').style.display = 'none';
+                        document.getElementById('product-lijst').style.display = 'block';
                     }
                 });
             } else {
@@ -153,6 +157,7 @@
             }
         }
     });
+
 </script>
 </body>
 </html>

@@ -61,7 +61,7 @@
         <div class="card-grid">
             @foreach ($producten as $product)
                 <div class="card">
-                    <img src="{{ asset($product->afbeelding_vak_open) }}" class="card-img-top" alt="Vak met product en deur open">
+                    <img src="{{ asset($product->deur_afbeelding) }}" class="card-img-top" alt="Vak met product en deur open">
                     <div class="card-body">
                         <h4 class="card-title">{{ $product->product_naam }}</h4>
                         <p class="card-text">Voorraad: {{ $product->voorraad->sum('aantal') }}</p>
