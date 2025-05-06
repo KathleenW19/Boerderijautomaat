@@ -11,9 +11,9 @@
                  alt="Product afbeelding">
         @endif
 
-        <!--<img src="{{ asset('images/deur_dicht.png') }}"
+        <img src="{{ asset('images/deur_dicht.png') }}"
              class="card-img vak-deur-afbeelding"
              alt="Deur afbeelding"
-             data-vak-id="{{ $vak->id }}">-->
+             data-vak-id="{{ $vak->id }}">
     </div>
 </div>
