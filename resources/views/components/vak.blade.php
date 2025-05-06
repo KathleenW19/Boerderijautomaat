@@ -4,16 +4,16 @@
     </div>
 
     <div class="vak-image-container">
-        @if($vak->product)
+        @if ($vak->product)
             <img src="{{ asset($vak->product->afbeelding_met_product) }}"
-                 class="card-img vak-product-afbeelding"
-                 data-vak-id="{{ $vak->id }}"
-                 alt="Product afbeelding">
+                class="card-img vak-product-afbeelding {{ $vak->status === 'leeg' ? 'verborgen' : '' }}"
+                data-vak-id="{{ $vak->id }}"
+                alt="Product afbeelding">
         @endif
 
-        <img src="{{ asset('images/deur_dicht.png') }}"
-             class="card-img vak-deur-afbeelding"
-             alt="Deur afbeelding"
-             data-vak-id="{{ $vak->id }}">
+            <img src="{{ asset('images/deur_dicht.png') }}"
+                class="card-img vak-deur-afbeelding"
+                data-vak-id="{{ $vak->id }}"
+                alt="Deur afbeelding">
     </div>
 </div>

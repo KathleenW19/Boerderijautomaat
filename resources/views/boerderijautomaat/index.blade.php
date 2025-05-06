@@ -110,14 +110,22 @@
                 document.getElementById('betaalopties').style.display = 'none';
                 document.getElementById('instructies').style.display = 'block';
 
-                // Toon product afbeelding achter deur
+                // Toon productafbeelding
                 const productImage = document.querySelector(`img.vak-product-afbeelding[data-vak-id="${gekozenVakId}"]`);
                 if (productImage) {
-                    productImage.style.display = 'block'; // Toon afbeelding als vak geopend is
+                    productImage.classList.remove('verborgen');
+                }
+
+                // Verberg deur-afbeelding
+                const deurAfbeelding = document.querySelector(`img.vak-deur-afbeelding[data-vak-id="${gekozenVakId}"]`);
+                if (deurAfbeelding) {
+                    deurAfbeelding.classList.add('verborgen');
                 }
             }
         });
     }
+
+
 
 
     // Event delegation for click op vak images
@@ -142,6 +150,12 @@
                         const productImage = document.querySelector(`img.vak-product-afbeelding[data-vak-id="${vakId}"]`);
                         if (productImage) {
                             productImage.style.display = 'none';
+                        }
+
+                        // Maak de deur afbeelding weer zichtbaar
+                        const deurAfbeelding = document.querySelector(`img.vak-deur-afbeelding[data-vak-id="${vakId}"]`);
+                        if (deurAfbeelding) {
+                            deurAfbeelding.classList.remove('verborgen'); // Deur wordt zichtbaar
                         }
 
                         alert("Product verwijderd. Dank u!");

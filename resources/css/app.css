@@ -227,6 +227,8 @@ input, select{
 
 .vak-image-container {
   position: relative;
+  aspect-ratio: 267 / 210; /* of een andere verhouding die past bij je ontwerp */
+  width: 100%;
 }
 
 .vak-deur-afbeelding {
@@ -249,7 +251,10 @@ input, select{
   position: absolute;
 }
 
-
+.verborgen {
+  opacity: 0;
+  pointer-events: auto;
+}
 
 @media (min-width: 1440px) {
   .row-1 .vak-nummer{
