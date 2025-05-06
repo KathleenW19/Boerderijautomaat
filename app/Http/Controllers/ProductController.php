@@ -15,7 +15,7 @@ class ProductController extends Controller
         'categorie_id' => 'required|exists:product_categorie,id',
         'prijs' => 'required|numeric',
         'afbeelding_met_product' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-        'afbeelding_vak_open' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        'deur_afbeelding' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
     ]);
     
     $afbeeldingVakMetProduct = null;
@@ -24,8 +24,8 @@ class ProductController extends Controller
     }
 
     $afbeeldingVakMetProductDeurOpen = null;
-    if ($request->hasFile('afbeelding_vak_open')) {
-        $afbeeldingVakMetProductDeurOpen = $request->file('afbeelding_vak_open')->store('product_images', 'public');
+    if ($request->hasFile('deur_afbeelding')) {
+        $afbeeldingVakMetProductDeurOpen = $request->file('deur_afbeelding')->store('product_images', 'public');
     }
 
     // Het nieuwe product aanmaken
@@ -34,7 +34,7 @@ class ProductController extends Controller
         'categorie_id' => $request->categorie_id,
         'prijs' => $request->prijs,
         'afbeelding_met_product' => $afbeeldingVakMetProduct,
-        'afbeelding_vak_open' => $afbeeldingVakMetProductDeurOpen,
+        'deur_afbeelding' => $afbeeldingVakMetProductDeurOpen,
     ]);
 
     return redirect()->route('voorraad.index');

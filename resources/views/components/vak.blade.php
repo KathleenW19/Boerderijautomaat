@@ -6,7 +6,7 @@
     <div class="vak-image-container">
         @if($vak->product)
             <img src="{{ asset($vak->product->afbeelding_met_product) }}"
-                 class="vak-product-afbeelding"
+                 class="card-img vak-product-afbeelding"
                  data-vak-id="{{ $vak->id }}"
                  alt="Product afbeelding">
         @endif

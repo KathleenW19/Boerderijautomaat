@@ -8,7 +8,7 @@ class Product extends Model
 {
     public $timestamps = false;
     protected $table = 'producten';
-    protected $fillable=['product_naam', 'categorie_id', 'prijs', 'afbeelding_met_product', 'afbeelding_vak_open'];
+    protected $fillable=['product_naam', 'categorie_id', 'prijs', 'afbeelding_met_product', 'deur_afbeelding'];
 
     public function categorie(){
         return $this->belongsTo(ProductCategorie::class, 'categorie_id');
@@ -25,6 +25,17 @@ class Product extends Model
     public function vakken(){
         return $this ->hasMany(Vak::class);
     }
+
+    public function getProductAfbeeldingUrlAttribute()
+    {
+        return asset('images/' . $this->product_afbeelding);
+    }
+
+    public function getDeurAfbeeldingUrlAttribute()
+    {
+        return asset('images/deur_dicht.png');
+    }
+
 
     //Prijs wordt behandelt als een decimal
     protected $casts = ['prijs'=> 'decimal:2'];
