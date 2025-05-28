@@ -20,7 +20,7 @@ class VoorraadController extends Controller
     public function edit($id){
         $product = Product::findOrFail($id);
         $categorieen = ProductCategorie::all();
-        return view('voorraad.edit', compact('product', 'categorieen'));
+        return view('producten.edit', compact('product', 'categorieen'));
     }
 
     public function updateProduct(Request $request, $id){
@@ -50,5 +50,21 @@ class VoorraadController extends Controller
         $product->save(); //product opslaan 
 
         return redirect()->route('voorraad.index')->with('succes', 'Product succesvol bijgewerkt!');
+    }
+
+    public function delete($id){
+        $product = Product::findOrFail($id);
+        
+        //Alle vakken met dit product verwijderen
+        foreach ($product->vakken as $vak) {
+            $vak->update([
+                'product_id' => null,
+                'status' => 'leeg',
+            ]);
+        }
+
+        $product->delete(); //Product verwijderen
+
+        return redirect()->route('voorraad.index')->with('succes', 'Product succesvol verwijderd!');
     }
 }

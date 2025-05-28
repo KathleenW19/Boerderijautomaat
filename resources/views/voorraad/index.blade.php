@@ -65,7 +65,12 @@
                     <div class="card-body">
                         <h4 class="card-title">{{ $product->product_naam }}</h4>
                         <p class="card-text">Voorraad: {{ $product->voorraad->sum('aantal') }}</p>
-                        <a href="{{ route('voorraad.edit', ['id' => $product->id])}}" class="btn">Bijwerken</a>
+                        <a href="{{ route('producten.edit', ['id' => $product->id])}}" class="btn">Bijwerken</a>
+                        <form action="{{ route('voorraad.delete', ['id' => $product->id]) }}" method="POST" onsubmit="return confirm('Weet je zeker dat je dit product wilt verwijderen?')">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn">Verwijder</button>
+                        </form>
                     </div>
                 </div>
             @endforeach

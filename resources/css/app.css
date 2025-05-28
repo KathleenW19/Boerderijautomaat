@@ -127,15 +127,12 @@ header li a:hover {
   background-color: rgb(199, 105, 38);
   color:rgb(242, 232, 207);
   padding: 0.5rem 1rem;
+  margin: 0.25rem 0.25rem;
   width: 100%;
 }
 
 .login button:hover, .btn:hover{
   background-color: rgb(189, 86, 12);
-}
-
-button{ 
-  margin: 1rem 0;
 }
 
 input, select, textarea {
@@ -319,12 +316,13 @@ input, select{
   background-color: rgb(199, 105, 38);
   color: rgb(224, 151, 72);
   width: 50%;
+  height: 100%;
+  padding-bottom: 1.75rem;
   aspect-ratio: 1 / 1;
   display: flex;
   justify-content: center;
+  align-items: center;
   font-size: 6rem;
-  text-align: center;
-  margin: 0 auto;
 }
 
 .add-btn:hover{

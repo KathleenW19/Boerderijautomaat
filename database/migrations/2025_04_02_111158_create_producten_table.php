@@ -17,7 +17,6 @@ return new class extends Migration
             $table->foreignId('categorie_id')->nullable()->constrained('product_categorie')->onDelete('set null');
             $table->decimal('prijs', 8, 2);
             $table->string('afbeelding_met_product')->nullable();
-            $table->string('deur_afbeelding')->nullable();
         });
     }
 

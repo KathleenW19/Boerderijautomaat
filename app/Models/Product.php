@@ -8,7 +8,7 @@ class Product extends Model
 {
     public $timestamps = false;
     protected $table = 'producten';
-    protected $fillable=['product_naam', 'categorie_id', 'prijs', 'afbeelding_met_product', 'deur_afbeelding'];
+    protected $fillable=['product_naam', 'categorie_id', 'prijs', 'afbeelding_met_product'];
 
     public function categorie(){
         return $this->belongsTo(ProductCategorie::class, 'categorie_id');
