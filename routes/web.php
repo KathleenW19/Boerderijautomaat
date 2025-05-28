@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\GebruikerController;
 use App\Http\Controllers\VoorraadController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\VakController;
 use App\Http\Controllers\VerkoopTransactieController;
 use App\Models\VerkoopTransactie;
@@ -28,7 +29,8 @@ Route::middleware(['auth'])->get('/voorraad', [VoorraadController::class, 'index
     Route::get('/producten/edit/{id}', [VoorraadController::class, 'edit'])->name('producten.edit');
     Route::put('/producten/edit/{id}', [VoorraadController::class, 'updateProduct']) -> name('voorraad.update');
     Route::delete('/voorraad/{id}', [VoorraadController::class, 'delete'])->name('voorraad.delete');
-    Route::get('/producten/create', [VoorraadController::class, 'create'])->name('producten.create');
+    Route::get('/producten/create', [ProductController::class, 'create'])->name('producten.create');
+    Route::post('/producten/store', [ProductController::class, 'store'])->name('producten.store');
 
 // Vakken route
 Route::post('/bijvullen', [VakController::class, 'bijvullen'])->name('bijvullen');

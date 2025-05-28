@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Producten Voorraad</title>
+    <title>Product bijwerken</title>
 </head>
 <body>
     @include('components.header')
     <main>
         <h1>Product bijwerken: {{ $product->product_naam }}</h1>
-        <form method="POST" action="{{ route('voorraad.update', $product->id)}}" required>
+        <form method="POST" action="{{ route('producten.store', $product->id)}}" required>
         @csrf
         @method('PUT')
             <label for="productname">Product naam:</label>
