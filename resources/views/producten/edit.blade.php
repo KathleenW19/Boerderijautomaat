@@ -9,7 +9,7 @@
     @include('components.header')
     <main>
         <h1>Product bijwerken: {{ $product->product_naam }}</h1>
-        <form method="POST" action="{{ route('producten.store', $product->id)}}" required>
+        <form method="POST" action="{{ route('producten.update', $product->id)}}" required>
         @csrf
         @method('PUT')
             <label for="productname">Product naam:</label>

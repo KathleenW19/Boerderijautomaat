@@ -25,12 +25,15 @@ Route::post('/logout', [GebruikerController::class, 'logout'])->name('logout');
 
 // Voorraad route
 Route::middleware(['auth'])->get('/voorraad', [VoorraadController::class, 'index'])->name('voorraad.index');
-    // Bewerken
-    Route::get('/producten/edit/{id}', [VoorraadController::class, 'edit'])->name('producten.edit');
-    Route::put('/producten/edit/{id}', [VoorraadController::class, 'updateProduct']) -> name('voorraad.update');
-    Route::delete('/voorraad/{id}', [VoorraadController::class, 'delete'])->name('voorraad.delete');
+    
+//Producten route
+Route::middleware(['auth'])->get('/producten', [ProductController::class, 'index'])->name('producten.index');
     Route::get('/producten/create', [ProductController::class, 'create'])->name('producten.create');
     Route::post('/producten/store', [ProductController::class, 'store'])->name('producten.store');
+    Route::get('/producten/edit/{id}', [ProductController::class, 'edit'])->name('producten.edit');
+    Route::put('/producten/edit/{id}', [ProductController::class, 'updateProduct']) -> name('producten.update');
+    Route::delete('/voorraad/{id}', [ProductController::class, 'delete'])->name('producten.delete');
+
 
 // Vakken route
 Route::post('/bijvullen', [VakController::class, 'bijvullen'])->name('bijvullen');

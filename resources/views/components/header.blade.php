@@ -15,7 +15,8 @@
                         @auth
                             @if(Auth::user()->role === 'medewerker' || Auth::user()->role === 'beheerder')
                                 <li><a href="{{ route('boerderijautomaat.index')}}">Home</a></li>
-                                <li><a href="{{ route('voorraad.index')}}">Voorraad</a></li>
+                                <li><a href="{{ route('voorraad.index')}}">Voorraad Vakken</a></li>
+                                <li><a href="{{ route('producten.index')}}">Voorraad Producten</a></li>
                                 <li><a href="{{ route('transactie.index')}}">Transacties</a></li>
                             @endif
                         @endauth                        
