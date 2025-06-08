@@ -15,8 +15,9 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(GebruikerSeeder::class);
         $this->call(ProductCategorieSeeder::class);
-        $this->call(class: ProductSeeder::class);
-        $this->call(class: VoorraadSeeder::class);
-        $this->call(class: VakkenSeeder::class);
+        $this->call( ProductSeeder::class);
+        $this->call( VoorraadSeeder::class);
+        $this->call( VakTypeSeeder::class);
+        $this->call( VakkenSeeder::class);
     }
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Vak;
 use App\Models\Product;
+use App\Models\VakType;
 use App\Models\Voorraad;
 use Illuminate\Http\Request;
 
@@ -15,41 +16,10 @@ class VakController extends Controller
         $gebruiker = Auth::user();
         $vakken = Vak::all();
         $producten= Product::all();
+        
 
         // Retourneer de view met de vakken data
         return view('boerderijautomaat.index', compact('gebruiker', 'vakken', 'producten'));
-    }
-
-    public function bijvullen(Request $request)
-    {
-        // Haal het vak en het product op via de request
-        $vakId = $request->input('vak_id');
-        $productId = $request->input('product_id');
-
-        // Haal het vak en het product op
-        $vak = Vak::findOrFail($vakId);
-        $product = Product::findOrFail($productId);
-
-        // Haal de voorraad van het product op
-        $voorraad = Voorraad::where('product_id', $product->id)->first();
-
-        // Controleer of er voldoende voorraad is
-        if ($voorraad && $voorraad->aantal > 0) {
-            // Koppel het product aan het vak
-            $vak->product_id = $product->id;
-            $vak->status = 'bezet';  // Markeer het vak als bezet
-            $vak->save();
-
-            // Verminder de voorraad met 1
-            $voorraad->aantal -= 1;
-            $voorraad->save();
-
-            // Redirect terug naar de pagina van de vakken
-            return redirect()->route('boerderijautomaat.index');
-        } else {
-            // Als er geen voorraad is, geef een foutmelding en stuur de gebruiker naar de voorraad pagina
-            return redirect()->route('voorraad.index')->with('error', 'Niet genoeg voorraad voor dit product.');
-        }
     }
 
     public function checkVak(Request $request)

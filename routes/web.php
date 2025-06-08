@@ -23,10 +23,13 @@ Route::middleware(['auth'])->get('/boerderijautomaat', [VakController::class, 'i
 // Logout route
 Route::post('/logout', [GebruikerController::class, 'logout'])->name('logout');
 
-// Voorraad route
-Route::middleware(['auth'])->get('/voorraad', [VoorraadController::class, 'index'])->name('voorraad.index');
+// Voorraad vakken route
+Route::middleware(['auth'])->get('/vakken', [VoorraadController::class, 'index'])->name('vakken.index');
+    Route::post('/bijvullen', [VoorraadController::class, 'bijvullen'])->name('vakken.bijvullen');
+    Route::get('/vakken/edit/{id}', [VoorraadController::class, 'edit'])->name('vakken.edit');
+    Route::put('/vakken/edit/{id}', [VoorraadController::class, 'updateVak']) -> name('vakken.update');
     
-//Producten route
+//Voorraad producten route
 Route::middleware(['auth'])->get('/producten', [ProductController::class, 'index'])->name('producten.index');
     Route::get('/producten/create', [ProductController::class, 'create'])->name('producten.create');
     Route::post('/producten/store', [ProductController::class, 'store'])->name('producten.store');
@@ -36,7 +39,6 @@ Route::middleware(['auth'])->get('/producten', [ProductController::class, 'index
 
 
 // Vakken route
-Route::post('/bijvullen', [VakController::class, 'bijvullen'])->name('bijvullen');
 Route::post('/vak/controleer', [VakController::class, 'checkVak'])->name('vak.controleer');
 Route::post('/vak/betaal', [VakController::class, 'betaal'])->name('vak.betaal');
 Route::post('/vak/{id}/update-status', [VakController::class, 'updateStatus']);

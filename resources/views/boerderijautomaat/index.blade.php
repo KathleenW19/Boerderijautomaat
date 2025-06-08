@@ -43,7 +43,7 @@
                         @if ($vak->product)
                             <div class="product-keuze" data-vak-id="{{ $vak->id }}" data-product-id="{{ $vak->product->id }}" data-product-naam="{{ $vak->product->product_naam }}" data-prijs="{{ $vak->product->prijs }}">
                                 Vak {{ $vak->id }}: {{ $vak->product->product_naam }} - €{{ number_format($vak->product->prijs, 2) }}
-                                <button onclick="bevestigKeuze({{ $vak->id }})">Kies</button>
+                                <button onclick="bevestigKeuze({{ $vak->id }})" class="btn">Kies</button>
                             </div>
                         @endif
                     @endforeach

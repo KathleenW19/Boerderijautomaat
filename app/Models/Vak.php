@@ -11,12 +11,17 @@ class Vak extends Model
     protected $primaryKey = 'id';
 
     // Geef de vulbare velden aan
-    protected $fillable = ['product_id', 'status'];
+    protected $fillable = ['product_id', 'vak_type_id', 'status'];
 
     // Relatie naar het Product model
     public function product()
     {
         return $this->belongsTo(Product::class);
+    }
+
+    public function vakType()
+    {
+        return $this->belongsTo(VakType::class);
     }
 
     public function getAfbeeldingSrcAttribute()

@@ -14,6 +14,7 @@
             <thead>
                 <tr>
                     <th>Vak</th>
+                    <th>Vak type</th>
                     <th>Status</th>
                     <th>Product</th>
                     <th>Acties</th>
@@ -24,6 +25,7 @@
                 @foreach ($vakken as $index => $vak)
                     <tr>
                         <td>{{ $index + 1 }}</td>
+                        <td>{{ ucfirst($vak->vakType->naam)}}</td>
                         <td>{{ ucfirst($vak->status) }}</td>
                         <td>
                             @if ($vak->status == 'leeg')
@@ -37,7 +39,7 @@
                         <td>
                             <!-- Alleen de mogelijkheid geven om vakken bij te vullen als deze leeg is -->
                             @if ($vak->status == 'leeg')
-                                <form action="{{ route('bijvullen') }}" method="POST">
+                                <form action="{{ route('vakken.bijvullen') }}" method="POST">
                                     @csrf
                                     <input type="hidden" name="vak_id" value="{{ $vak->id }}">
                                     <select name="product_id" class="form-control" required>
@@ -48,6 +50,8 @@
                                     </select>
                                     <button type="submit" class="btn">Vullen</button>
                                 </form>
+                            @else
+                                <a href="{{route('vakken.edit', $vak->id)}}" class="btn">Bijwerken</a>
                             @endif
                         </td>
                     </tr>
