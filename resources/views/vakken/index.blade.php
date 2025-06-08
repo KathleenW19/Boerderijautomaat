@@ -52,6 +52,11 @@
                                 </form>
                             @else
                                 <a href="{{route('vakken.edit', $vak->id)}}" class="btn">Bijwerken</a>
+                                <form action="{{route('vakken.empty', $vak->id)}}" method="POST">
+                                    @csrf
+                                    @method('PUT')
+                                    <button type="submit" class="btn">Vak leegmaken</button>
+                                </form>
                             @endif
                         </td>
                     </tr>

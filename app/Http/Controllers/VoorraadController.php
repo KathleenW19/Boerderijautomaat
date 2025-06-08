@@ -78,15 +78,6 @@ class VoorraadController extends Controller
             return redirect()->route('boerderijautomaat.index')->with('error', 'Niet genoeg voorraad voor dit product.');
         }
 
-        // Voorraad terugzetten voor oud product (indien aanwezig)
-        if ($vak->product_id) {
-            $voorraadOud = Voorraad::where('product_id', $vak->product_id)->first();
-            if ($voorraadOud) {
-                $voorraadOud->aantal += 1;
-                $voorraadOud->save();
-            }
-        }
-
         // Vak bijwerken
         $vak-> vak_type_id = $request->input('vak_type_id');
         $vak->product_id = $nieuwProductId;
@@ -100,4 +91,23 @@ class VoorraadController extends Controller
         return redirect()->route('boerderijautomaat.index')->with('succes', 'Vak succesvol bijgewerkt.');
     }
 
+    public function emptyVak(Request $request, $id)
+    {
+        $vak = Vak::findOrFail($id);
+
+        // Voorraad terugzetten voor oud product (indien aanwezig)
+        if ($vak->product_id) {
+            $voorraadOud = Voorraad::where('product_id', $vak->product_id)->first();
+            if ($voorraadOud) {
+                $voorraadOud->aantal += 1;
+                $voorraadOud->save();
+            }
+        }
+
+        $vak->product_id = null;
+        $vak->status = 'leeg';
+        $vak->save();
+
+        return redirect()->route('boerderijautomaat.index')->with('succes', 'Vak is geleegd.');
+    }
 }
