@@ -106,7 +106,44 @@
         })
         .then(response => response.json())
         .then(data => {
+            console.log('Eerste fetch response:', data); // <-- Voeg deze regel toe
             if (data.success) {
+                // Haal product_id en aantal op uit je HTML (pas aan naar jouw structuur)
+                const vakElement = document.querySelector(`.product-keuze[data-vak-id="${gekozenVakId}"]`);
+                const gekozenProductId = vakElement ? vakElement.getAttribute('data-product-id') : null;
+                const gekozenAantal = 1; // Of laat de gebruiker kiezen
+
+                /*console.log('gekozenVakId:', gekozenVakId);
+                console.log('vakElement:', vakElement);
+                console.log('gekozenProductId:', gekozenProductId);*/
+
+                // Transactie aanmaken
+                fetch(`/transactie`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                    },
+                    body: JSON.stringify({
+                        product_id: gekozenProductId,
+                        aantal: gekozenAantal,
+                        betaal_methode: methode
+                    })
+                })
+                .then(res => res.json())
+                .then(transactieData => {
+                    if (transactieData.success) {
+                        // Succesmelding of verdere afhandeling
+                        alert('Transactie succesvol!');
+                    } else {
+                        alert('Transactie mislukt!');
+                    }
+                })
+                .catch(error => {
+                    alert('Fout bij het aanmaken van de verkooptransactie: ' + error.message);
+                });
+
+                // UI updates
                 document.getElementById('betaalopties').style.display = 'none';
                 document.getElementById('instructies').style.display = 'block';
 
@@ -124,9 +161,6 @@
             }
         });
     }
-
-
-
 
     // Event delegation for click op vak images
     document.addEventListener('click', function (e) {
@@ -158,7 +192,7 @@
                             deurAfbeelding.classList.remove('verborgen'); // Deur wordt zichtbaar
                         }
 
-                        alert("Product verwijderd. Dank u!");
+                        /*alert("Product verwijderd. Dank u!");*/
                         gekozenVakId = null;
 
                         // Terug naar startscherm

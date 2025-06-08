@@ -47,11 +47,13 @@ class VerkoopTransactieController extends Controller
         $verkochteProduct->save();  // Save the sold product in the 'verkochte_producten' table
 
         // Return to the transaction index page or wherever needed
-        if ($request->ajax() || $request->wantsJson()) {
-            return response()->json(['success' => true, 'transactie_id' => $transactie->id]);
-        }
-    
-        return redirect()->route('transactie.index');
+        return response()->json(['success' => true, 'transactie_id' => $transactie->id]);
     }
 
+    public function expectsJson(Request $request)
+    {
+        if ($request->expectsJson()) {
+            // Laravel stuurt nu automatisch JSON bij validatiefouten
+        }
+    }
 }
