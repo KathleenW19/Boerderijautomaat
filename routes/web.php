@@ -5,7 +5,6 @@ use App\Http\Controllers\VoorraadController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\VakController;
 use App\Http\Controllers\VerkoopTransactieController;
-use App\Models\VerkoopTransactie;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -28,7 +27,7 @@ Route::middleware(['auth'])->get('/vakken', [VoorraadController::class, 'index']
     Route::post('/bijvullen', [VoorraadController::class, 'bijvullen'])->name('vakken.bijvullen');
     Route::get('/vakken/edit/{id}', [VoorraadController::class, 'edit'])->name('vakken.edit');
     Route::put('/vakken/edit/{id}', [VoorraadController::class, 'updateVak']) -> name('vakken.update');
-    Route::put('/vakken/{vak}/leegmaken', [VoorraadController::class, 'emptyVak'])->name('vakken.leegmaken');
+    Route::put('/vakken/{vak}/leegmaken', [VoorraadController::class, 'emptyVak'])->name('vakken.empty');
     
 //Voorraad producten route
 Route::middleware(['auth'])->get('/producten', [ProductController::class, 'index'])->name('producten.index');

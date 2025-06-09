@@ -281,22 +281,27 @@ input, select{
 /* cards */
 .card{
   display:flex;
-  align-items: center;
+  flex-direction: column;
+  align-items: stretch;
   background-color:rgb(224, 151, 72);
-  width: 22%;
+  width: 100%; /* vult de grid-kolom */
   padding: 1rem;
+  height: 100%;
+  box-sizing: border-box;
 }
 
 .card-grid{
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.5rem;
   margin: 2%;
+  text-align: center;
 }
 
 .card-img{
-  width:50%;
+  width:100%;
   height: auto;
+  object-fit: cover;
 }
 
 .card-body{
@@ -310,24 +315,54 @@ input, select{
 .add-btn{
   background-color: rgb(199, 105, 38);
   color: rgb(224, 151, 72);
-  width: 50%;
-  height: 100%;
-  padding-bottom: 1.75rem;
+  width: 60%;
   aspect-ratio: 1 / 1;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 6rem;
+  margin: 0 auto;
+  padding: 0;
 }
 
+.button-container{
+  display:flex;
+  gap: 1rem;
+  margin-top: 1rem;
+  flex-wrap: wrap;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.button-container .btn,
+.button-container button {
+  flex: 1 1 0;
+  width: 100%;
+  min-width: 0;
+}
+.button-container form {
+  flex: 1 1 0;
+  width: 100%;
+  margin: 0;
+}
+
+.add-card {
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.add-btn {
+  margin: 0 auto;
+}
 
 @media (min-width: 2560px) {
-  .card{
-    width: 15%;
+  .card-body, .add-card{
+    font-size: 1.25rem;
   }
 
-  .card-body{
-    font-size: 1.25rem;
+  .add-btn{
+  width: 75%;
   }
 }
 
