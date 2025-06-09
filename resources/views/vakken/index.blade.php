@@ -25,7 +25,7 @@
                 @foreach ($vakken as $index => $vak)
                     <tr>
                         <td>{{ $index + 1 }}</td>
-                        <td>{{ ucfirst($vak->vakType->naam)}}</td>
+                        <td>{{ ucfirst($vak->vakType->naam ?? 'Geen type') }}</td>
                         <td>{{ ucfirst($vak->status) }}</td>
                         <td>
                             @if ($vak->status == 'leeg')

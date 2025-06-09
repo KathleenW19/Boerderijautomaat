@@ -18,6 +18,8 @@
                                 <li><a href="{{ route('vakken.index')}}">Voorraad Vakken</a></li>
                                 <li><a href="{{ route('producten.index')}}">Voorraad Producten</a></li>
                                 <li><a href="{{ route('transactie.index')}}">Transacties</a></li>
+                                <li><a href="{{ route('productCategorie.index')}}">Product categoriën</a></li>
+                                <li><a href="{{ route('vakTypes.index')}}">Vak type</a></li>
                             @endif
                         @endauth                        
                     </ul>

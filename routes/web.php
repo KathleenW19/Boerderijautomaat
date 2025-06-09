@@ -3,8 +3,10 @@
 use App\Http\Controllers\GebruikerController;
 use App\Http\Controllers\VoorraadController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProductCategorieController;
 use App\Http\Controllers\VakController;
 use App\Http\Controllers\VerkoopTransactieController;
+use App\Http\Controllers\VakTypesController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -54,3 +56,18 @@ Route::middleware(['auth'])-> get('/transactie', [VerkoopTransactieController::c
 Route::post('/transactie', [VerkoopTransactieController::class, 'store'])->name('transactie.store');
 
 
+// Vaktypes
+Route::middleware(['auth'])->get('/vakTypes', [VakTypesController::class, 'index'])->name('vakTypes.index');
+    Route::get('/vakTypes/create', [VakTypesController::class, 'create'])->name('vakTypes.create');
+    Route::post('/vakTypes/store', [VakTypesController::class, 'store'])->name('vakTypes.store');
+    Route::get('/vakTypes/edit/{id}', [VakTypesController::class, 'edit'])->name('vakTypes.edit');
+    Route::put('/vakTypes/edit/{id}', [VakTypesController::class, 'update'])->name('vakTypes.update');
+    Route::delete('/vakTypes/{id}', [VakTypesController::class, 'delete'])->name('vakTypes.delete');
+
+// Product categorieën
+Route::middleware(['auth'])-> get('/productCategorie', [ProductCategorieController::class, 'index'])->name('productCategorie.index');
+    Route::get('/productCategorie/create', [ProductCategorieController::class, 'create'])->name('productCategorie.create');
+    Route::post('/productCategorie/store', [ProductCategorieController::class, 'store'])->name('productCategorie.store');
+    Route::get('/productCategorie/edit/{id}', [ProductCategorieController::class, 'edit'])->name('productCategorie.edit');
+    Route::put('/productCategorie/edit/{id}', [ProductCategorieController::class, 'update']) -> name('productCategorie.update');
+    Route::delete('/productCategorie/{id}', [ProductCategorieController::class, 'delete'])->name('productCategorie.delete');

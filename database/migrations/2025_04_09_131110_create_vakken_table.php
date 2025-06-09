@@ -14,7 +14,10 @@ return new class extends Migration
         Schema::create('vakken', function (Blueprint $table) {
             $table->id();
             $table->foreignId('product_id')->nullable()->constrained('producten')->onDelete('set null');  // Verwijst naar een product
-            $table->foreignId('vak_type_id')->constrained('vak_types')->onDelete('cascade');  // Verwijst naar het type vak
+            $table->foreignId('vak_type_id')
+                ->nullable()
+                ->constrained('vak_types')
+                ->onDelete('set null');  // Verwijst naar het type vak
             $table->string('status')->default('leeg');  // Dit kan 'leeg', 'bezet' of 'vak geopend' zijn.
             $table->timestamps();
         });
