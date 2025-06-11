@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vakken Voorraad</title>
+    <title>Vakken types</title>
 </head>
 <body>
     @include('components.header')
     <main>
     <section>
-        <h1>Status vakken</h1>
+        <h1>Vakken types lijst:</h1>
         <a href="{{ route('vakTypes.create')}}" class="btn">Niew vaktype</a>
         <table class="table">
             <thead>
