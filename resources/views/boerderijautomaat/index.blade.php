@@ -75,7 +75,8 @@
         <script>
             let gekozenVakId = null;
 
-            // Toon bevesteging vraag of correct product is gekozen
+            // Sla gekozen vak ID op en toon bevestiging
+            // Functie om de keuze te bevestigen
             function bevestigKeuze(vakId) {
                 gekozenVakId = vakId;
                 const div = document.querySelector(`.product-keuze[data-vak-id="${vakId}"]`);
@@ -84,21 +85,24 @@
 
                 document.getElementById('product-lijst').style.display = 'none';
                 document.getElementById('bevestiging').style.display = 'block';
-                document.getElementById('bevestiging-tekst').innerText = `Wilt u "${naam}" kopen voor €${prijs}?`;
+                document.getElementById('bevestiging-tekst').innerText = `Wilt u "${naam}" kopen voor €${prijs}?`; // Bevestigingstekst
             }
 
+            // Annuleer de keuze en ga terug naar de product lijst
             function annuleerKeuze() {
                 gekozenVakId = null;
                 document.getElementById('bevestiging').style.display = 'none';
                 document.getElementById('product-lijst').style.display = 'block';
             }
 
+            // Toon betaalopties na bevestiging
             function toonBetaalopties() {
                 document.getElementById('bevestiging').style.display = 'none';
                 document.getElementById('betaalopties').style.display = 'block';
             }
 
             function betaal(methode) {
+                // vak openen en status bijwerken
                 fetch(`/vak/${gekozenVakId}/update-status`, {
                     method: 'POST',
                     headers: {
@@ -164,6 +168,7 @@
                 });
             }
 
+            //Product uit vak halen
             // Event delegation voor click op vak images
             document.addEventListener('click', function (e) {
                 if (e.target.classList.contains('vak-deur-afbeelding')) {
@@ -206,7 +211,6 @@
                     }
                 }
             });
-
         </script>
     </body>
 </html>
