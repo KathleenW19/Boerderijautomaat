@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -10,13 +9,11 @@ class VakTypesController extends Controller
     public function index()
     {
         $vakTypes = VakType::all();
-
         return view('vaktypes.index', compact('vakTypes'));
     }
 
     public function create()
     {
-        
         return view('vakTypes.create');
     }
 

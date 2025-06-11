@@ -1,19 +1,13 @@
 <?php
-
 namespace App\Models;
-
 use Illuminate\Database\Eloquent\Model;
 
 class Vak extends Model
 {
-    // Geef de naam van de tabel aan als het niet het meervoud van de modelnaam is
     protected $table = 'vakken';
     protected $primaryKey = 'id';
-
-    // Geef de vulbare velden aan
     protected $fillable = ['product_id', 'vak_type_id', 'status'];
 
-    // Relatie naar het Product model
     public function product()
     {
         return $this->belongsTo(Product::class);
@@ -59,5 +53,4 @@ class Vak extends Model
 
         return "removeProductFromVak({$this->id})";
     }
-
 }

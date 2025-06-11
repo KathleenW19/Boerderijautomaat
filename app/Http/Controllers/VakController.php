@@ -1,10 +1,8 @@
 <?php
-
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Vak;
 use App\Models\Product;
-use App\Models\VakType;
 use App\Models\Voorraad;
 use Illuminate\Http\Request;
 
@@ -16,7 +14,6 @@ class VakController extends Controller
         $gebruiker = Auth::user();
         $vakken = Vak::all();
         $producten= Product::all();
-        
 
         // Retourneer de view met de vakken data
         return view('boerderijautomaat.index', compact('gebruiker', 'vakken', 'producten'));
@@ -27,6 +24,7 @@ class VakController extends Controller
         $vaknummer = $request->input('vaknummer');
         $vak = Vak::find($vaknummer);
 
+        // Controleer of het vak bestaat en of het niet leeg is
         if ($vak) {
             if ($vak->status === 'leeg') {
                 session()->forget('gekozen_vak');
@@ -64,7 +62,6 @@ class VakController extends Controller
                 return response()->json(['success' => true]);
             }
         }
-
         return response()->json(['error' => 'Vak niet gevonden of ongeldige status'], 404);
     }
 }

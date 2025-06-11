@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use App\Models\VerkoopTransactie;
@@ -11,49 +10,37 @@ class VerkoopTransactieController extends Controller
 {
     public function index()
     {
-        // Get all transactions with their related products
         $transacties = VerkoopTransactie::with('verkochteProducten')->get();
-
-        // Return the view with the 'transacties' data passed to it
         return view('transactie.index', compact('transacties'));
     }
 
     public function store(Request $request)
     {
-        // Validate the incoming data
+        // Validatie
         $data = $request->validate([
-            'product_id' => 'required|exists:producten,id',  // Ensure the product exists
-            'aantal' => 'required|integer|min:1',            // Ensure the amount is an integer and at least 1
-            'betaal_methode' => 'required|in:contant,contactloos',  // Ensure the payment method is either cash or contactless
+            'product_id' => 'required|exists:producten,id',
+            'aantal' => 'required|integer|min:1', 
+            'betaal_methode' => 'required|in:contant,contactloos',
         ]);
 
-        // Find the product by its ID
         $product = Product::find($data['product_id']);
 
-        // Calculate the total amount for the transaction
+        // Bereken het totaalbedrag voor de transactie
         $totaalbedrag = $product->prijs * $data['aantal'];
 
-        // Create a new sale transaction in the VerkoopTransactie table
+        // Maak een nieuwe verkooptransactie aan
         $transactie = new VerkoopTransactie();
         $transactie->betaal_methode = $data['betaal_methode'];
         $transactie->totaalbedrag = $totaalbedrag;
-        $transactie->save();  // Save the transaction in the database
+        $transactie->save();  // Transactie opslaan
 
-        // Create a record in the 'verkochte_producten' table for the current transaction
+        // data opslaan in verkochte_producten
         $verkochteProduct = new VerkochteProducten();
-        $verkochteProduct->transactie_id = $transactie->id; // Link to the newly created transactie
-        $verkochteProduct->product_id = $data['product_id']; // Save the selected product ID
-        $verkochteProduct->aantal = $data['aantal']; // Save the quantity
-        $verkochteProduct->save();  // Save the sold product in the 'verkochte_producten' table
+        $verkochteProduct->transactie_id = $transactie->id;
+        $verkochteProduct->product_id = $data['product_id'];
+        $verkochteProduct->aantal = $data['aantal'];
+        $verkochteProduct->save();
 
-        // Return to the transaction index page or wherever needed
         return response()->json(['success' => true, 'transactie_id' => $transactie->id]);
-    }
-
-    public function expectsJson(Request $request)
-    {
-        if ($request->expectsJson()) {
-            // Laravel stuurt nu automatisch JSON bij validatiefouten
-        }
     }
 }

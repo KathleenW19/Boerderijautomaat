@@ -55,7 +55,7 @@ class GebruikerController extends Controller
         }
 
         // Debug info loggen
-        Log::info('Login debug info', [
+        /*Log::info('Login debug info', [
             'ingevoerde_username' => $request->uname,
             'ingevoerde_wachtwoord' => $request->pwd,
             'gehashte_wachtwoord_uit_db' => $user->password,
@@ -63,7 +63,7 @@ class GebruikerController extends Controller
             'verwacht_plaintext' => 'KlantWachtwoord',
             'klopt_met_test_waarde' => Hash::check('KlantWachtwoord', $user->password),
             'wachtwoord_exact_gelijk_aan_test' => $request->pwd === 'KlantWachtwoord',
-        ]);
+        ]);*/
 
         // Controleer wachtwoord
         if (!Hash::check($request->pwd, $user->password)) {
@@ -76,10 +76,9 @@ class GebruikerController extends Controller
         return redirect()->route('boerderijautomaat.index');
     }
 
-
     // Gebruiker uit loggen en terug naar login pagina sturen
     public function logout(){
         Auth::logout();
-        return redirect()->route('login.form'); //Terug naar login pagina sturen
+        return redirect()->route('login.form');
     }
 }

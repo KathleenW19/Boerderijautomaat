@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -28,8 +27,6 @@ class ProductController extends Controller
     }
 
     public function updateProduct(Request $request, $id){
-        //dd($request->all());
-        //Valideer form gegevens
         $validatedData = $request->validate([
             'productname' => 'required|string|max:255',
             'prijs' => 'required|numeric|min:0',
@@ -59,7 +56,6 @@ class ProductController extends Controller
     public function delete($id){
         $product = Product::findOrFail($id);
         
-        //Alle vakken met dit product verwijderen
         foreach ($product->vakken as $vak) {
             $vak->update([
                 'product_id' => null,
@@ -68,7 +64,6 @@ class ProductController extends Controller
         }
 
         $product->delete(); //Product verwijderen
-
         return redirect()->route('producten.index')->with('succes', 'Product succesvol verwijderd!');
     }
 

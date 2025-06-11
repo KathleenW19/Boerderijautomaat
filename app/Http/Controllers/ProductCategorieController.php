@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -10,7 +9,6 @@ class ProductCategorieController extends Controller
     public function index()
     {
         $categorieen = ProductCategorie::all();
-
         return view('productCategorie.index', compact('categorieen'));
     }
 
@@ -32,7 +30,6 @@ class ProductCategorieController extends Controller
         ]);
 
         ProductCategorie::create(['naam' => $request->input('naam')]);
-
         return redirect()->route('productCategorie.index')->with('success', 'Product categorie succesvol aangemaakt.');
     }
 

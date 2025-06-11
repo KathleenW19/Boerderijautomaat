@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 use App\Models\Product;
 use App\Models\Vak;
@@ -41,7 +40,6 @@ class VoorraadController extends Controller
             $voorraad->aantal -= 1;
             $voorraad->save();
 
-            // Redirect terug naar de pagina van de vakken
             return redirect()->route('boerderijautomaat.index');
         } else {
             // Als er geen voorraad is, geef een foutmelding en stuur de gebruiker naar de voorraad pagina

@@ -1,8 +1,5 @@
 <?php
-
 namespace App\Models;
-
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Facades\Auth;
 
@@ -13,7 +10,7 @@ class User extends Authenticatable
 
     protected $fillable=['naam', 'password', 'role'];
 
-    //Kijk na welke functie de gebruiker heeft
+    //Kijk na welke functie/role de gebruiker heeft
     public static function isBeheerder(){
         $gebruiker = Auth::user();
         return $gebruiker->role === 'beheerder';

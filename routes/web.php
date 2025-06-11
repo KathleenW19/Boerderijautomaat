@@ -8,7 +8,6 @@ use App\Http\Controllers\VakController;
 use App\Http\Controllers\VerkoopTransactieController;
 use App\Http\Controllers\VakTypesController;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Auth;
 
 Route::get('/', function () {
     return view('welcome');
@@ -53,7 +52,7 @@ Route::get('/api/product/{id}/deur_afbeelding', function($id) {
 
 //Transactie route
 Route::middleware(['auth'])-> get('/transactie', [VerkoopTransactieController::class, 'index'])->name('transactie.index');
-Route::post('/transactie', [VerkoopTransactieController::class, 'store'])->name('transactie.store');
+    Route::post('/transactie', [VerkoopTransactieController::class, 'store'])->name('transactie.store');
 
 
 // Vaktypes
