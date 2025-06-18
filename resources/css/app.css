@@ -1,5 +1,10 @@
 @import 'tailwindcss';
-
+/* variabelen */
+:root {
+  --orange-color:rgb(224, 151, 72);
+  --button-orange: rgb(199, 105, 38);
+  --white-color: rgb(242, 232, 207);
+}
 /* algemeen */
 h1 {
   font-size: 1.5rem;
@@ -27,7 +32,7 @@ a, p {
 }
 
 body{
-  background-color: rgb(242, 232, 207);
+  background-color: var(--white-color);
 }
 
 main{
@@ -36,8 +41,8 @@ main{
 
 button, .btn{
   display: inline-block;
-  background-color: rgb(199, 105, 38);
-  color:rgb(242, 232, 207);
+  background-color: var(--button-orange);
+  color:var(--white-color);
   text-align: center;
   width: 100%;
   padding: 0.5rem 1rem;
@@ -52,7 +57,7 @@ button, .btn{
 /* header */
 header {
     background-color:rgb(106, 153, 78);
-    color: rgb(242, 232, 207);
+    color: var(--white-color);
     height: 100px;
     padding: 1rem 5%;
     display: flex;
@@ -102,7 +107,7 @@ header li a:hover, .logout-button:hover {
 }
 
 .welcome-text{
-  color: rgb(242, 232, 207);
+  color: var(--white-color);
   padding: 1rem;
   display: flex;
   align-items: center;
@@ -125,7 +130,7 @@ header li a:hover, .logout-button:hover {
   max-width: 30%;
   padding: 1rem;
   margin: 4rem auto;
-  background-color:rgb(224, 151, 72);
+  background-color: var(--orange-color);
 }
 
 .login button {
@@ -141,7 +146,7 @@ input, select, textarea {
   width: 100%;
   margin: 0;
   padding: 0.5rem;
-  background-color: rgb(242, 232, 207);
+  background-color: var(--white-color);
 }
 
 input, select{
@@ -281,18 +286,18 @@ input, select{
 }
 
 /* cards */
-.card{
-  display:flex;
+.card {
+  display: flex;
   flex-direction: column;
   align-items: stretch;
-  background-color:rgb(224, 151, 72);
-  width: 100%; /* vult de grid-kolom */
+  background-color: var(--orange-color);
+  width: 100%;
   padding: 1rem;
   height: 100%;
   box-sizing: border-box;
 }
 
-.card-grid{
+.card-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 1.5rem;
@@ -300,13 +305,13 @@ input, select{
   text-align: center;
 }
 
-.card-img{
-  width:100%;
+.card-img {
+  width: 100%;
   height: auto;
   object-fit: cover;
 }
 
-.card-body{
+.card-body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -314,9 +319,9 @@ input, select{
   font-size: 1rem;
 }
 
-.add-btn{
-  background-color: rgb(199, 105, 38);
-  color: rgb(224, 151, 72);
+.add-btn {
+  background-color: var(--button-orange);
+  color: var(--orange-color);
   width: 60%;
   aspect-ratio: 1 / 1;
   display: flex;
@@ -327,77 +332,51 @@ input, select{
   padding: 0;
 }
 
-.button-container{
-  display:flex;
-  gap: 1rem;
-  margin-top: 1rem;
-  flex-wrap: wrap;
-  max-width: 100%;
-  box-sizing: border-box;
-}
-
-.button-container .btn,
-.button-container button {
-  flex: 1 1 0;
-  width: 100%;
-  min-width: 0;
-}
-.button-container form {
-  flex: 1 1 0;
-  width: 100%;
-  margin: 0;
-}
-
 .add-card {
   align-items: center;
   justify-content: center;
   text-align: center;
 }
 
-.add-btn {
-  margin: 0 auto;
-}
-
 @media (min-width: 2560px) {
-  .card-body, .add-card{
+  .card-body, .add-card {
     font-size: 1.25rem;
   }
-
-  .add-btn{
-  width: 75%;
+  .add-btn {
+    width: 75%;
   }
 }
 
 /* Vakken informatie */
-table, th, td{
+table, th, td {
   border: 1px solid;
-  padding : 5px 10px;
+  padding: 5px 10px;
 }
 
 /* product kiezen */
-.betalen-container{
-  background-color: rgb(224, 151, 72);
+.betalen-container {
+  background-color: var(--orange-color);
   margin: 0.5rem;
   padding: 1rem;
   width: 30%;
 }
 
-.betalen-container button:hover{
+.betalen-container button:hover {
   background-color: rgb(218, 125, 60);
 }
 
-#betalenKeuze{
-  display:none;
+#betalenKeuze {
+  display: none;
 }
 
-.product-keuze{
+.product-keuze {
   display: flex;
   padding: 0;
   margin: 0;
   align-items: center;
 }
 
-.product-keuze button{
+.product-keuze button {
   margin-left: auto;
   width: 25%;
 }
