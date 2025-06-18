@@ -34,15 +34,13 @@ class Vak extends Model
 
     public function getAltTextAttribute()
     {
-        if ($this->status === 'leeg') {
-            return 'Leeg vak';
-        } elseif ($this->status === 'vak geopend') {
-            return 'Vak geopend';
-        } elseif (isset($this->product)) {
-            return 'Vak met product';
+        $alt = 'Leeg vak';
+        if ($this->status === 'vak geopend') {
+            $alt = 'Vak geopend';
+        } elseif ($this->status !== 'leeg' && isset($this->product)) {
+            $alt = 'Vak met product';
         }
-
-        return 'Leeg vak';
+        return $alt;
     }
 
     public function getOnClickAttribute()

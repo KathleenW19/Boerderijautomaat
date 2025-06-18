@@ -117,7 +117,7 @@
                     if (data.success) {
                         const vakElement = document.querySelector(`.product-keuze[data-vak-id="${gekozenVakId}"]`);
                         const gekozenProductId = vakElement ? vakElement.getAttribute('data-product-id') : null;
-                        const gekozenAantal = 1; 
+                        const gekozenAantal = 1;
 
                         /*console.log('gekozenVakId:', gekozenVakId);
                         console.log('vakElement:', vakElement);

@@ -48,7 +48,7 @@ class ProductController extends Controller
             $voorraad->save(); //voorraad opslaan
         }
 
-        $product->save(); //product opslaan 
+        $product->save(); //product opslaan
 
         return redirect()->route('producten.index')->with('succes', 'Product succesvol bijgewerkt!');
     }

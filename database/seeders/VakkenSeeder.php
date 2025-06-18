@@ -15,7 +15,7 @@ class VakkenSeeder extends Seeder
             ['product_id' => 4, 'vak_type_id' => 2, 'status' => 'bezet'],
             ['product_id' => 7, 'vak_type_id' => 2, 'status' => 'bezet'],
             ['product_id' => 3, 'vak_type_id' => 2, 'status' => 'bezet'],
-            ['product_id' => 2, 'vak_type_id' => 2, 'status' => 'bezet'],  
+            ['product_id' => 2, 'vak_type_id' => 2, 'status' => 'bezet'],
             ['product_id' => 1, 'vak_type_id' => 2, 'status' => 'bezet'],
             ['product_id' => 8, 'vak_type_id' => 2, 'status' => 'bezet'],
             ['product_id' => 9, 'vak_type_id' => 1, 'status' => 'bezet'],

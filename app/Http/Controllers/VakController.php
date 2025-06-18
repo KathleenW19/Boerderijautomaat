@@ -49,13 +49,14 @@ class VakController extends Controller
             if ($nieuweStatus === 'vak geopend' || $nieuweStatus === 'leeg' || $nieuweStatus === 'bezet') {
                 $vak->status = $nieuweStatus;
 
-                if ($nieuweStatus === 'leeg') {
-                    if ($vak->product_id) {
-                        // Voeg het product weer toe aan de voorraad
-                        $voorraad = Voorraad::where('product_id', $vak->product_id)->first();
-
-                        $vak->product_id = null;
+                if ($nieuweStatus === 'leeg' && $vak->product_id) {
+                    // Voeg het product weer toe aan de voorraad
+                    $voorraad = Voorraad::where('product_id', $vak->product_id)->first();
+                    if ($voorraad) {
+                        $voorraad->aantal += 1;
+                        $voorraad->save();
                     }
+                    $vak->product_id = null;
                 }
 
                 $vak->save();

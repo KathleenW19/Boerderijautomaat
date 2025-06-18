@@ -34,5 +34,5 @@ class Product extends Model
     public function getDeurAfbeeldingUrlAttribute()
     {
         return asset('images/deur_dicht.png');
-    }    
+    } 
 }

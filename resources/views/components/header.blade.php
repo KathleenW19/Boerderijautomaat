@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="UTF-8">
@@ -21,7 +22,7 @@
                                 <li><a href="{{ route('productCategorie.index')}}">Product categoriën</a></li>
                                 <li><a href="{{ route('vakTypes.index')}}">Vak type</a></li>
                             @endif
-                        @endauth                        
+                        @endauth
                     </ul>
                 </div>
                 
@@ -29,7 +30,7 @@
                 <div class="nav-right">
                     <ul>
                         @auth
-                            <li class="welcome-text">Welkom, {{ Auth::user()->naam }}</li> 
+                            <li class="welcome-text">Welkom, {{ Auth::user()->naam }}</li>
                             <form action="{{ route('logout') }}" method="POST" style="display: inline;">
                                 @csrf
                                 <button type="submit" class="logout-button">Logout</button>

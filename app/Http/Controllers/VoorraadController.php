@@ -89,7 +89,7 @@ class VoorraadController extends Controller
         return redirect()->route('boerderijautomaat.index')->with('succes', 'Vak succesvol bijgewerkt.');
     }
 
-    public function emptyVak(Request $request, $id)
+    public function emptyVak($id)
     {
         $vak = Vak::findOrFail($id);
 

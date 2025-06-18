@@ -19,7 +19,7 @@ class VerkoopTransactieController extends Controller
         // Validatie
         $data = $request->validate([
             'product_id' => 'required|exists:producten,id',
-            'aantal' => 'required|integer|min:1', 
+            'aantal' => 'required|integer|min:1',
             'betaal_methode' => 'required|in:contant,contactloos',
         ]);
 

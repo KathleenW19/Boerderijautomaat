@@ -24,7 +24,7 @@
                 <h3>Kies een vaktype</h3>
                 <select name="vak_type_id" class="form-control" required>
                     @foreach ($vakTypes as $vakType)
-                        <option value="{{ $vakType->id }}" 
+                        <option value="{{ $vakType->id }}"
                             {{ $vak->vak_type_id  == $vakType->id ? 'selected' : '' }}>
                             {{ $vakType->naam }}
                         </option>
