@@ -27,7 +27,7 @@
                             <td>{{ $transactie->id }}</td>
                             <td>
                                 @foreach($transactie->verkochteProducten as $verkocht)
-                                    {{$verkocht->product->product_naam}}
+                                    {{ $verkocht->product->product_naam ?? 'Product verwijderd' }}
                                 @endforeach
                             </td>
                             <td>
